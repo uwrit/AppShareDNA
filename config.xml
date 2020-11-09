@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="edu.uw.sharedna" version="1.0.24" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://cordova.apache.org/ns/1.0">
+    <name>ShareDNA</name>
+    <description>
+        ShareDNA encrypted dna information sharing application
+    </description>
+    <author email="jeevana@uw.edu" href="http://sharedna.org">
+        Jeevan Anandasakaran - Institute of Translational Health Sciences - University of Washington
+    </author>
+	<content src="index.html" />
+
+    <access origin='sharing.iths.org' allows-arbitrary-loads-for-media='true' allows-arbitrary-loads-in-web-content='true' />
+	<allow-navigation href="*" />
+    <allow-intent href="https://sharing.iths.org/*" />
+	<allow-intent href="blob:*" />
+	<allow-intent href="file:*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+	<platform name="android">
+	
+        <allow-intent href="market:*" />
+		<preference name="SplashMaintainAspectRatio" value="true"/>
+		<preference name="SplashShowOnlyFirstTime" value="true"/>
+		<icon density="ldpi" src="res/icon/android/ldpi.png"/>
+		<icon density="mdpi" src="res/icon/android/mdpi.png"/>
+		<icon density="hdpi" src="res/icon/android/hdpi.png"/>
+		<icon density="xhdpi" src="res/icon/android/xhdpi.png"/>
+		<icon density="xxhdpi" src="res/icon/android/xxhdpi.png"/>
+		<icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
+		 <!--  Portrait  -->
+		<splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png"/>
+		<splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png"/>
+		<splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png"/>
+		<splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png"/>
+		<splash density="port-xxhdpi" src="res/screen/android/splash-port-xxhdpi.png"/>
+		<splash density="port-xxxhdpi" src="res/screen/android/splash-port-xxxhdpi.png"/>
+		 <!--  Landscape  -->
+		 <!--
+			<splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png"/>
+			<splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png"/>
+			<splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png"/>
+			<splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png"/>
+			<splash density="land-xxhdpi" src="res/screen/android/splash-land-xxhdpi.png"/>
+			<splash density="land-xxxhdpi" src="res/screen/android/splash-land-xxxhdpi.png"/>				
+		-->
+		<!-- for Android -->
+		
+		<preference name="android-targetSdkVersion" value="29"/>
+		<resource-file src="certs/sharing.iths.org.cer"  target="assets/certificates/sharing.iths.org.cer"/>
+		
+        <feature name="SocialSharing">
+          <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+        </feature>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+		<icon src="res/icon/ios/icon-1024.png" width="1024" height="1024"/>
+		<icon src="res/icon/ios/icon-small.png" width="29" height="29"/>
+		<icon src="res/icon/ios/icon-small@2x.png" width="58" height="58"/>
+		<icon src="res/icon/ios/icon-small@3x.png" width="87" height="87"/>
+		<icon src="res/icon/ios/icon-small-40.png" width="40" height="40"/>
+		<icon src="res/icon/ios/icon-small-40@2x.png" width="80" height="80"/>
+		<icon src="res/icon/ios/icon-small-40@3x.png" width="120" height="120"/>
+		<icon src="res/icon/ios/icon-small-50.png" width="50" height="50"/>
+		<icon src="res/icon/ios/icon-small-50@2x.png" width="100" height="100"/>
+		<icon src="res/icon/ios/icon.png" width="57" height="57"/>
+		<icon src="res/icon/ios/icon@2x.png" width="114" height="114"/>
+		<icon src="res/icon/ios/icon-60.png" width="60" height="60"/>
+		<icon src="res/icon/ios/icon-60@2x.png" width="120" height="120"/>
+		<icon src="res/icon/ios/icon-60@3x.png" width="180" height="180"/>
+		<icon src="res/icon/ios/icon-72.png" width="72" height="72"/>
+		<icon src="res/icon/ios/icon-72@2x.png" width="144" height="144"/>
+		<icon src="res/icon/ios/icon-76.png" width="76" height="76"/>
+		<icon src="res/icon/ios/icon-76@2x.png" width="152" height="152"/>
+		<icon src="res/icon/ios/icon-167.png" width="167" height="167"/>
+		<icon src="res/icon/ios/icon-83.5@2x.png" width="167" height="167"/>
+		 <!--  Storyboard portrait  -->
+		<splash src="res/screen/ios/Default@2x~iphone~anyany.png"/>
+		<splash src="res/screen/ios/Default@2x~iphone~comany.png"/>
+		<splash src="res/screen/ios/Default@3x~iphone~anyany.png"/>
+		<splash src="res/screen/ios/Default@3x~iphone~comany.png"/>
+		<splash src="res/screen/ios/Default@2x~ipad~anyany.png"/>
+		<splash src="res/screen/ios/Default@2x~ipad~comany.png"/>
+		
+		 <resource-file src="certs/sharing.iths.org.cer" />
+		<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    		<string>Need Camera for users to take pictures of documents to be shared.</string>
+		</edit-config>
+		<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+    		<string>Need photo library access to get pictures of documents to be shared.</string>
+		</edit-config>
+
+
+
+ <!--  Storyboard landscape  -->
+ <!--
+
+        <splash src="res/screen/ios/Default@2x~iphone~comcom.png"/>
+        <splash src="res/screen/ios/Default@3x~iphone~anycom.png"/>
+        
+-->
+ <!--  Legacy portrait  -->
+ <!--
+
+        <splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
+        <splash src="res/screen/ios/Default@2x~iphone.png" width="640" height="960"/>
+        <splash src="res/screen/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+        <splash src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+        <splash src="res/screen/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+        <splash src="res/screen/ios/Default-667h.png" width="750" height="1334"/>
+        <splash src="res/screen/ios/Default-736h.png" width="1242" height="2208"/>
+        
+-->
+ <!--  Legacy landscape  -->
+ <!--
+
+        <splash src="res/screen/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+        <splash src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+        
+-->     <resource-file src="certs/sharing.iths.org.cer" />
+
+  		<config-file platform="ios" target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>whatsapp</string>
+                <!-- add more query scheme strings -->
+            </array>
+		 </config-file>
+ <!-- for iOS -->
+		<feature name="SocialSharing">
+  			<param name="ios-package" value="SocialSharing" />
+		</feature>
+    </platform>
+	<preference name="SplashScreen" value="screen" />
+	<preference name="AutoHideSplashScreen" value="true" />
+	<preference name="SplashScreenDelay" value="300"/>
+	<preference name="SplashShowOnlyFirstTime" value="true" />
+	<preference name="phonegap-version" value="cli-8.1.1" />
+	<preference name="android-minSdkVersion" value="19" />
+	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
+ 	<preference name="AndroidExtraFilesystems" value="sdcard,cache" />
+	<preference name="StatusBarBackgroundColor" value="#4b2e83" />
+	<preference name="StatusBarStyle" value="lightcontet" />
+	<preference name="StatusBarDefaultScrollToTop" value="false" />
+	<preference name="StatusBarOverlaysWebView" value="false" />
+	<plugin name="cordova-plugin-device"  />
+	<plugin name="cordova-plugin-splashscreen" />
+	<plugin name="cordova-plugin-statusbar" />
+	<plugin name="cordova-plugin-whitelist" />
+	<plugin name="cordova-plugin-file"  />
+	<plugin name="cordova-plugin-zip"  />
+	<plugin name="cordova-plugin-media"/>
+	<plugin name="cordova-plugin-inappbrowser"  />
+	<plugin name="cordova-plugin-camera" />
+	<plugin name="cordova-plugin-media-capture"  />
+	<plugin name="cordova-plugin-file-downloader"  />
+	<plugin name="cordova-plugin-file-opener2"  />
+	<plugin name="cordova-plugin-contacts-phonenumbers"  />
+	<plugin name="cordova-plugin-x-socialsharing"  />
+	<plugin name="cordova-plugin-sslsupport"  />
+</widget>

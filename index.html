@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+  <head class="deep-purple">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta http-equiv="Access-Control-Allow-Origin" content="*" /> 
+	  <meta http-equiv="Access-Control-Allow-Headers" content="X-Requested-With" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+      <title>ShareDNA</title>
+      <link href="css/fonts.css" rel="stylesheet">
+      <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <script type="text/javascript" src="cordova.js"></script>
+      <script src="js/plugins/jquery/jquery-2.1.1.min.js"></script>
+      <script src="js/bin/materialize.min.js"></script>
+      <script>
+	  	  /* Carousel Script */
+          $(document).ready(function(){
+              $('.carousel').carousel();
+              // function for next slide
+              $('.next').click(function(){
+                  $('.carousel').carousel('next');
+              });
+              // function for prev slide
+              $('.prev').click(function(){
+                  $('.carousel').carousel('prev');
+              });
+          });
+      </script>
+      <style>
+
+        ::placeholder {
+          color: #696969;
+          opacity: 1;
+        }
+
+        label span { color: #696969;}
+
+        html {
+          box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+          box-sizing: inherit;
+        }
+
+        .column {
+          float: left;
+          width: 33.3%;
+          margin-bottom: 16px;
+          padding: 0 8px;
+        }
+
+        @media screen and (max-width: 650px) {
+          .column {
+            width: 100%;
+            display: block;
+          }
+        }
+
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .container2 {
+          padding: 0 16px;
+        }
+
+        .container2::after, .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+
+        .title {
+          color: grey;
+        }
+
+        #learn {
+          overflow-y: auto;
+        }
+
+        @media only screen and (max-width: 60em) {
+          #file {
+            display: block;
+            clear: both;
+          }
+        }
+
+      </style>
+  </head>
+  <body class="deep-purple" style="padding:0; margin:0;">
+    <header>
+      <!-- FIXED NAVBAR -->
+        <div class="navbar-fixed">
+            <nav class="deep-purple" role="navigation">
+              <div class="nav-wrapper container"><a id="logo-container" href="javascript:void(0);" class="brand-logo grey-text text-lighten-4">&nbsp;<object id="front-page-logo" type="image/svg+xml" style="height:40px; margin-bottom:5px; " align="absmiddle" data="images/ShareDNA.svg">Your browser does not support SVG</object>&nbsp;<span class="hide-on-small-only"> ShareDNA</span></a>
+                <ul class="right hide-on-med-and-down">
+                  <li class="secureHide"><a href="#login"> <i class="material-icons grey-text text-lighten-4  left">person</i>Login</a></li>
+                  <li class="secureHide"><a href="#register"> <i class="material-icons grey-text  text-lighten-4 left">person_add</i>Sign Up</a></li>
+                  <li class="secureShow"><a href="#files"> <i class="material-icons grey-text  text-lighten-4 left">attach_file</i>Files to Share</a></li>
+                  <li class="secureShow"><a href="#sent"> <i class="material-icons grey-text  text-lighten-4 left">send</i>Sent</a></li>
+                  <li class="secureShow"><a href="#account"> <i class="material-icons grey-text text-lighten-4  left">person</i>Account</a></li>
+					 <li class="secureShow"><a href="#logout"> <i class="material-icons grey-text text-lighten-4  left">logout</i>Logout</a></li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              </div>
+            </nav>          
+        </div> 
+      <!-- //FIXED NAVBAR -->
+      <!-- NAV MOBILE SIDE NAV -->
+        <ul id="nav-mobile" class="sidenav deep-purple lighten-1 ">
+                  <li>
+                      <div class="user-view">
+                          <div class="background deep-purple">
+                            <img src="images/W-Logo_Purple_RGB.png" alt="W Logo background" />
+                          </div>
+                          <a href="javascript:void(0)"><object id="user-view-logo" type="image/svg+xml" style="height:40px; margin-bottom:5px; " align="absmiddle" data="images/ShareDNA.svg">Your browser does not support SVG</object></a>
+                          <a href="javascript:void(0)"><span class="yellow-text text-accent-3 name">Share DNA App</span></a>
+                          <a href="javascript:void(0)"><span class="white-text email">Secure DNA Results Sharing</span></a>
+                      </div>
+                  </li>
+                  <li class="secureHide"><a class="grey-text text-lighten-3 sidenav-close" href="#login"> <i class="material-icons text-lighten-4  grey-text">person</i> Login</a></li>
+                  <li class="secureHide"><a class="grey-text text-lighten-3 sidenav-close" href="#register"> <i class="material-icons text-lighten-4  grey-text">person_add</i>Sign Up</a></li>
+                  <li class="secureShow"><a  class="grey-text text-lighten-3 sidenav-close"  href="#files"> <i class="material-icons grey-text  text-lighten-4 left">attach_file</i>Files</a></li>
+                  <li class="secureShow"><a  class="grey-text text-lighten-3 sidenav-close"  href="#sent"> <i class="material-icons grey-text  text-lighten-4 left">send</i>Sent</a></li>
+                  <li class="secureShow"><a class="grey-text text-lighten-3 sidenav-close"  href="#account"> <i class="material-icons grey-text text-lighten-4  left">person</i>Account</a></li>
+			<li class="secureShow"><a class="grey-text text-lighten-3 sidenav-close"  href="#logout"> <i class="material-icons grey-text text-lighten-4  left">logout</i>Logout</a></li>
+                </ul>
+      <!-- //NAV MOBILE SIDE NAV -->
+    </header>
+	<!-- PAGE CONTAINERS -->
+
+    <main  style="display:inline-grid;"  >
+    	<!-- LOGIN -->
+     	<div id="login" class="white">
+        	<div class="container">
+              <h1 class="center-align black-text">Login</h1>
+              	<!-- Content -->
+               <div class="row">
+                     <form id="loginForm"  method="post" action="https://sharing.iths.org/sharedna/api/" class="col s12 ajaxForm" >
+                       <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix black-text">email</i>
+                          <input id="loginEmail" name="loginEmail" type="email" class="validate" style="color:black;" required>
+                          <label for="loginEmail" class="black-text text-lighten-4 ">Email</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix black-text">security</i>
+                          <input id="loginPassword" name="loginPassword" type="password" style="color:black;" class="validate black-text" required>
+                          <label for="loginPassword" class="black-text text-lighten-4 ">Password</label>
+                        </div>
+                      </div>
+                       <div class="row">
+                         <div class="input-field col s6">
+                          <button class="btn waves-effect waves-light black-text" type="submit" name="action" value="login">Login
+                                <i class="material-icons right">send</i>
+                          </button>
+                        </div>
+                        <div class="input-field col s6">
+                      		 <a href="#forgot" class="right black-text" >Forgot password?</a>
+                        </div>
+                       </div>
+                    </form>
+                  </div>
+                  
+                   <div class="row">
+                         <div class="col s12">
+                            <h3 class="black-text">Need a login? <br>
+  <small><a href="#register" style="color:#696969">Sign up for an account<i class="material-icons">send</i></a></small></h3>
+                          
+                         </div>
+                   </div>
+                  <br />
+                  <br />
+            </div>
+        </div>
+        <!-- END LOGIN -->
+        <!-- REGISTER -->
+        <div id="register" class="white">
+        	<div class="container">
+      			<h1 class="center-align black-text text-lighten-4">Register</h1>
+                  <div class="row">
+                    <div class="col s12" >
+                		<p class="black-text">Enter your email and a password to log into ShareDNA</p>
+                	</div>
+                  </div>
+            	 <!-- Content -->
+                   <div class="row">
+                     <form id="registrationForm" method="post" action="https://sharing.iths.org/sharedna/api/" class="col s12 ajaxForm" >
+                      <div class="row">
+                        <div class="input-field col s12">
+                           <i class="material-icons prefix black-text">email</i>
+                          <input id="registerEmail" name="registerEmail" type="email" class="validate" style="color:black" required>
+                          <label for="registerEmail" class="black-text text-lighten-4 ">Email</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix black-text">security</i>
+                          <input id="registerPassword" name="registerPassword" type="password" style="color:black" class="validate black-text" required>
+                          <label for="registerPassword" class="black-text text-lighten-4 ">Password</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col s12">
+                          <label>
+                            <input type="checkbox" name="terms" style="border:black !important;" class=" black-text filled-in" />
+                            <span class="black-text text-lighten-4">I agree to the ShareDNA Terms Of Use and Privacy Policy</span>
+                          </label>
+                        </div>
+                      </div>
+                       <div class="row">
+                         <div class="input-field col s6">
+                        <button class="btn waves-effect waves-light black-text" type="submit" name="action" value="register">Submit
+  							  <i class="material-icons right">send</i>
+  						</button>
+                        </div>
+                        <div class="input-field col s6">
+                      		 <a href="#login" class="right black-text" >Already have a Login?</a>
+                        </div>
+                       </div>
+                    </form>
+                  </div>
+                  <br />
+				  <br />
+            </div>
+        </div>
+        <!-- END REGISTER -->
+        <!-- FORGOT -->
+        <div id="forgot" class="white">
+        	<div class="container">
+      			<h1 class="center-align black-text text-lighten-4">Forgot Password?
+            </h1>
+                  <div class="row">
+                    <div class="col s12" >
+                		<p class="black-text">Enter the email you signed up with and we will send you instructions for resetting your password.</p>
+                	</div>
+                  </div>
+            	 <!-- Content -->
+                   <div class="row">
+                     <form id="forgotForm" method="post" action="https://sharing.iths.org/sharedna/api/" class="col s12 ajaxForm" >
+            
+                       <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix black-text">email</i>
+                          <input id="forgotEmail" name="forgotEmail" type="email" class="validate" style="color:black;" required >
+                          <label for="forgotEmail" class="black-text text-lighten-4">Email</label>
+                           <span class="helper-text black-text text-lighten-4" data-error="Invalid email" data-success="Valid email"></span>
+                        </div>
+                      </div>
+                      
+                       <div class="row">
+                         <div class="input-field col s6">
+                        <button class="btn waves-effect waves-light black-text" type="submit" name="action" value="forgotPassword">Send
+  							  <i class="material-icons right">send</i>
+  						</button>
+                        </div>
+                        <div class="input-field col s6">
+                      		 <a href="#login" class="right black-text" ><i class="material-icons" style="font-size:1em;" >arrow_back</i> Return to Login</a>
+                        </div>
+                       </div>
+                    </form>
+                  </div>
+                  <br />
+				  <br />
+            </div>
+        </div>
+        <!-- END FORGOT -->
+        <!-- RETRIEVE FILE -->
+        <div id="retrieve" class="deep-purple lighten-1">
+        	<div class="container">
+      			<h1 class="center-align grey-text text-lighten-4">You have been sent a secured file!<br>
+ 					<small>By a friend or family member.</small>
+                </h1>
+                  <div class="row">
+                    <div class="col s12" >
+                		<p class="white-text">ShareDNA is used by friends and family to securely share encrypted files that contain sensitive genetic information. To retrieve your file please continue to login or register for a ShareDNA account.</p>
+                	</div>
+                  </div>
+            	 <!-- Content -->
+                   <div class="row">
+                     <form id="retrieveForm" method="post" action="https://sharing.iths.org/sharedna/api/" class="col s12 ajaxForm" >
+            
+                       <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix white-text">vpn_key</i>
+                          <input id="retrieveKey" name="retrieveKey" type="text"  style="color:rgba(255,255,255,1.00);" required >
+                        
+                           <span class="helper-text grey-text text-lighten-4" data-error="Invalid Key" data-success="Valid Key">This is auto filled when following a ShareDNA Link</span>
+                        </div>
+                      </div>
+                      
+                       <div class="row">
+                         <div class="input-field col s6">
+                        <button class="btn waves-effect waves-light black-text" type="submit" name="action" value="retrieveFile">Continue
+  							  <i class="material-icons right">send</i>
+  						</button>
+                        </div>
+                       </div>
+                    </form>
+                  </div>
+                  <br />
+				  <br />
+            </div>
+        </div>
+        <!-- END RETRIEVE FILE -->
+         <!-- RESET PASSWORD -->
+        <div id="reset" class="deep-purple lighten-1">
+        	<div class="container">
+      			<h1 class="center-align grey-text text-lighten-4">Reset Your Password<br>
+                </h1>
+                  <div class="row">
+                    <div class="col s12" >
+                		<p class="white-text">If you reset your password you will regain access to your account. However, since all files are encrypted using your previous password, all access to your old files will be lost.</p>
+                	</div>
+                  </div>
+            	 <!-- Content -->
+                   <div class="row">
+                     <form id="resetForm" method="post" action="https://sharing.iths.org/sharedna/api/" class="col s12 ajaxForm" >
+            
+                       <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix white-text">shield</i>
+                          <input id="resetPassword" name="resetPassword" type="password"  style="color:rgba(255,255,255,1.00);" required >
+                          <label for="resetPassword" class="grey-text text-lighten-4">Create a new password</label>
+                           <span class="helper-text grey-text text-lighten-4" data-error="Empty" data-success="Good">Enter a new password to use with ShareDNA.</span>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix white-text">shield</i>
+                          <input id="resetPassword2" name="resetPassword2" type="password"  style="color:rgba(255,255,255,1.00);" required >
+                          <label for="resetPassword2" class="grey-text text-lighten-4">Retype your password</label>
+                           <span class="helper-text grey-text text-lighten-4" data-error="Empty" data-success="Good">Confirm your entry by retyping your password.</span>
+                        </div>
+                      </div>
+                      
+                       <div class="row">
+                         <div class="input-field col s6">
+                         <input type="hidden" name="resetToken" id="resetToken" value="" />
+                        <button class="btn waves-effect waves-light black-text" type="submit" name="action" value="resetPassword">Continue
+  							  <i class="material-icons right">send</i>
+  						</button>
+                        </div>
+                       </div>
+                    </form>
+                  </div>
+                  <br />
+				  <br />
+            </div>
+        </div>
+        <!-- END RETRIEVE FILE -->
+        <!-- FILES -->
+    	<div id="files" class="white" secure="true">
+        	<div class="container">
+            	 <h4 class="left-align header" style="margin-bottom:8px; margin-top:1em !important;">Your Share DNA Files:</h4>
+                 <form action="https://sharing.iths.org/sharedna/api/" class="ajaxForm" id="uploadForm" name="uploadForm" method="post" enctype="multipart/form-data" >
+                 <table class="striped">
+                      <thead>
+                        <tr>
+                            <th>File:</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="fileRows">
+                      </tbody>
+                    </table>                
+                     <div class="row">
+                        <div class="col s9">
+                            <div class="file-field input-field">
+                              <div class="btn deep-purple">
+                                <span>Select File</span>
+                                <input type="file" id="file" accept="image/*" name="file" >
+                              </div>
+                              <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                              </div>
+                            </div>
+                        </div>
+                         <div class="col s3">
+                          <button class="btn waves-effect deep-purple " name="action" style="margin-top:1em;" type="submit" value="addFile" >Add<i class="material-icons right">upload_file</i>
+                          </button>
+                         </div>
+                     </div>
+                    <div class="row deviceShow">
+                      <div class="col s12">
+                        <button class="btn btn-large waves-effect deep-purple " style=" width:100% !important;" onClick="app.takePicture()" >Take Picture<i class="material-icons right">camera</i>
+                        </button>
+                      </div>
+                    </div>
+                   </form>
+                   <br>
+				   <br>
+            </div>
+        </div>
+        <!-- END FILES -->
+        <!-- SENT -->
+    	<div id="sent" class="white" secure="true">
+        	<div class="container">
+            	 <h4 class="left-align header" style="margin-bottom:8px; margin-top:1em !important;">Your Sent Files:</h4>
+            
+                 <table class="striped">
+                      <thead>
+                        <tr>
+                            <th>File:</th>
+                            <th>Rel:<span class="hide-on-small-only">ation</span></th>
+                            <th>Sent:</th>
+                            <th class="hide-on-small-only">Received</th>
+                        </tr>
+                      </thead>
+                      <tbody id="sentRows">
+                      </tbody>
+                    </table>                
+                    
+                  <br>
+<br>
+
+            </div>
+        </div>
+        <!-- END SENT -->
+        <!-- DOWNLOAD -->
+    	<div id="download" class="white" secure="true">
+        	<div class="container">
+            	 <h4 class="left-align" style="margin-bottom:8px; margin-top:1em !important;">Download File:</h4>
+                 <p>Your file is ready to download.</p>
+                 <p id="downloadLink"></p>
+                 <p><br><a href="#files"><i class="material-icons left">keyboard_return</i> Return to files</a></p>
+            </div>
+        </div>
+        <!-- END DOWNLOAD -->
+        <!-- METHOD -->
+    	<div id="method" class="white" secure="true">
+        	<div class="container">
+             <h4 class="left-align" style="margin-bottom:8px; margin-top:1em !important;">Share: <small class="file_name">{{file_name}}</small></h4>
+             <p>Select method to share file:</p>
+              
+                
+                <!-- SEND BY EMAIL -->
+                
+                  <div class="row center-align ">
+                  		<div class="col m12">
+                   			<a class="btn btn-large waves-effect waves-dark deep-purple" style="width:100%;" href="#email"><i class="material-icons right">email</i> Share by Email
+ 							</a>
+                  		</div>
+                  </div>
+                <!-- /SEND BY EMAIL -->
+             
+                   <!-- SEND BY SMS -->
+                
+                  <div class="row center-align deviceShow">
+                  		<div class="col m12">
+                   			<a class="btn btn-large waves-effect waves-dark deep-purple" style="width:100%;" href="#sms"><i class="material-icons right">sms</i> Share by Text Message
+ 							</a>
+                  		</div>
+                  </div>
+                <!-- /SEND BY SMS -->
+            </div>
+        </div>
+        <!-- METHOD -->
+        <!-- EMAIL -->
+    	<div id="email" class="white" secure="true">
+        	<div class="container">
+            	 <h4 class="left-align" style="margin-bottom:8px; margin-top:1em !important;"><i class="material-icons">email</i> Share by Email: <span class="file_name">{{file_name}}</span></h4>
+             	 <p>Personalize your message to your family and friends.  A secure link will be added allowing them to download your encrypted file.</p>
+                   <div class="row">
+                      <form id="shareForm" method="post"  action="https://sharing.iths.org/sharedna/api/" class="ajaxForm col s12">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input value="{{first_name}} has some DNA information to share with you via ShareDNA" id="subject" name="subject" type="text" class="validate">
+                              <label for="subject"><span>Subject</span></label>
+                            </div>
+                          </div>
+                          <div class="row">
+                          <div class="input-field col s12">
+                            <textarea id="message" name="message" class="materialize-textarea" placeholder="I'd like to share {{file_name}} with you.
+I've encrypted the file using the ShareDNA app."></textarea>
+                            <label for="message"><span>Message</span></label>
+                          </div>
+                        </div>                       
+                      <h5>Add Recipients: <br>
+					  <small>Enter email and relation type and select the add button to add to the list of recipients.</small></h5>
+                      
+                       <table class="striped">
+                        <thead>
+                          <tr>
+                              <th>Email:</th>
+                              <th>Relation:</th>
+                              <th></th>
+                          </tr>
+                        </thead>
+                        <tbody id="emailRows">
+                        	<tr>
+                            	<td colspan="3">No recipients selected.</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                      <br />
+                      
+                      <div class="row">
+                        <div class="col l6 s12">
+                              <input  id="shareEmail" placeholder="Enter Email" type="email" class="validate">
+                        </div>
+                        <div class="col l5 s12">
+                              <select id="relation" class="no-autoinit"  style="color:#333 !important; display:block !important;" name="relation">
+                                <option style="color:#333 !important;" value="0">Choose Relation Type</option>
+                                <option style="color:#333 !important;" value="1">Mother</option>
+                                <option style="color:#333 !important;" value="2">Father</option>
+                                <option style="color:#333 !important;" value="3">Sister</option>
+                                <option style="color:#333 !important;" value="4">Brother</option>
+                                <option style="color:#333 !important;" value="5">Cousin</option>
+                                <option style="color:#333 !important;" value="6">Nephew</option>
+                                <option style="color:#333 !important;" value="7">Neice</option>
+                                <option style="color:#333 !important;" value="8">Grandmother</option>
+                                <option style="color:#333 !important;" value="9">Grandfather</option>
+                                <option style="color:#333 !important;" value="10">Son</option>
+                                <option style="color:#333 !important;" value="11">Daughter</option>
+                                <option style="color:#333 !important;" value="100">Friend</option>
+                                <option style="color:#333 !important;" value="200">Other</option>
+                              </select>
+                        </div>
+                     </div>
+                 		<div class="row">
+                       	 	<div class="col s6">
+								 <button class="btn btn-large deep-purple waves-effect waves-dark" onClick="app.addEmailRecipient();" type="button">ADD CONTACT
+									<i class="material-icons right">add</i>
+								</button>
+                        	</div>
+                       	 	<div class="col s6">
+								 <button id="sendEmailButton" class="btn btn-large red waves-effect waves-dark" type="submit" style="float:right;" name="action" value="sendEmail">Send Email
+                                    <i class="material-icons right">send</i>
+                                 </button>
+                        	</div>
+                   		 </div>
+<br>
+<br>
+<input type="hidden" id="open_key" name="open_key" value="" />
+<input type="hidden" id="file_key" name="file_key" value="" />
+                      </form>
+                    </div>
+            </div>
+        </div>
+        <!-- END EMAIL -->
+        <!-- SMS -->
+    	<div id="sms" class="white" secure="true">
+        	<div class="container">
+            	 <h4 class="left-align" style="margin-bottom:8px; margin-top:1em !important;">Share by Text Message <small class="file_name">{{file_name}}</small></h4>
+                  <p>Personalize your message to your family and friends.  A secure link will be added allowing them to download your encrypted file.</p>
+                   <div class="row">
+                      <form id="smsForm" method="post"  action="https://sharing.iths.org/sharedna/api/" class="ajaxForm col s12">
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <textarea rows="4" id="smsMessage" name="message" class="materialize-textarea">I'd like to share {{file_name}} with you. I've encrypted the file using the ShareDNA app.</textarea>
+                            <label for="smsMessage"><span>Message</span></label>
+                          </div>
+                        </div>
+                      <h5>Add SMS Recipients: <br>
+					  <small>Enter cell phone number and relation type and select the add button to add to the list of recipients.</small></h5>
+                       <table class="striped">
+                        <thead>
+                          <tr>
+                              <th>SMS:</th>
+                              <th>Relation:</th>
+                              <th></th>
+                          </tr>
+                        </thead>
+                        <tbody id="smsRows">
+                        	<tr>
+                            	<td colspan="3">No recipients selected.</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                      <br />
+                      <div class="row">
+                        <div class="col l6 s12">
+                              <input  id="smsPhone" name="smsPhone" placeholder="Enter Phone" type="text" class="validate">
+                        </div>
+                        <div class="col l5 s12">
+                              <select id="sms_relation" class="no-autoinit" style="color:#333; width:80%;  display:block !important;" name="sms_relation">
+                                <option style="color:#333 !important;" value="0">Choose Relation Type</option>
+                                <option style="color:#333 !important;" value="1">Mother</option>
+                                <option style="color:#333 !important;" value="2">Father</option>
+                                <option style="color:#333 !important;" value="3">Sister</option>
+                                <option style="color:#333 !important;" value="4">Brother</option>
+                                <option style="color:#333 !important;" value="5">Cousin</option>
+                                <option style="color:#333 !important;" value="6">Nephew</option>
+                                <option style="color:#333 !important;" value="7">Neice</option>
+                                <option style="color:#333 !important;" value="8">Grand Mother</option>
+                                <option style="color:#333 !important;" value="9">Grand Father</option>
+                                <option style="color:#333 !important;" value="10">Son</option>
+                                <option style="color:#333 !important;" value="11">Daughter</option>
+                                <option style="color:#333 !important;" value="100">Friend</option>
+                                <option style="color:#333 !important;" value="200">Other</option>
+                              </select>
+                        </div>
+                     </div>
+                 		<div class="row">
+							<div class="col s6">
+                          		<button id="addSMSButton" class="btn btn-large waves-effect waves-dark deep-purple" onClick="app.addSmsRecipient();" type="button">ADD <i class="material-icons ">add</i>
+								</button>
+                        	</div>
+                       	 	<div class="col s6">
+								 <button id="sendSMSButton" class="btn btn-large red waves-effect waves-dark" type="submit" name="action" style="float:right;" value="sendSMS">Send Sms
+                                    <i class="material-icons right">send</i>
+                                 </button>
+                        	</div>
+                   		 </div>
+                        <input type="hidden" id="sms_open_key" name="open_key" value="" />
+                        <input type="hidden" id="sms_file_key" name="file_key" value="" />
+                      </form>
+                    </div>
+                    <div class="row">
+                      <div >
+                       <a class=" modal-trigger" href="#contacts">
+						   <button class="btn btn-large waves-effect deep-purple " style=" width:100% !important;" >
+							   Select From Contacts<i class="material-icons right">group</i>
+                            </button>
+					   </a>
+                       <div id="contacts" class="modal modal-fixed-footer"> 
+                        	<div class="row" >
+                                	<div class="modal-content">
+                                    	<h4><i class="material-icons left">group</i> Select SMS Contact</h4>
+                                           <table id="contactTable" class="striped">
+                                              <thead>
+                                                <tr>          
+                                                    <th>Name:</th>
+                                                    <th></th>                                    
+                                                </tr>
+                                              </thead>
+                                              <tbody id="contactRows">
+                                                  <tr>
+                                                      <td colspan="2">No Contacts</td>
+                                                  </tr>
+                                              </tbody>
+                                            </table>
+                                     </div>
+                                     <div class="modal-footer">
+                                     	<button type="button" class="modal-close waves-effect waves-green deep-purple btn white-text"><i class="material-icons left white-text">close</i> Close</button>
+                                     </div>
+                             </div>
+                       </div>
+                      </div>
+                    </div>
+                      <br>
+                      <br>
+            </div>
+        </div>
+        <!-- END SMS -->
+        <!-- ACCOUNT -->
+    	<div id="account" class="white" secure="true">
+        	<div class="container">
+            	 <h4 class="left-align" style="margin-bottom:8px; margin-top:1em !important;">Your Account:</h4>
+                 <p>Use this form to change your password. This will invalidate any unused keys sent to others.</p>
+                 <div class="row">
+                      <form id="changeForm" method="post"  action="https://sharing.iths.org/sharedna/api/" class="ajaxForm col s12">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input value="" id="currentPassword" name="currentPassword" type="password" />
+                              <label for="currentPassword"><span>Current Password</span></label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input value="" id="newPassword" name="newPassword" type="password" />
+                              <label for="newPassword"><span>New Password</span></label>
+                            </div>
+                          </div>
+                       	  <div class="row">
+                            <div class="input-field col s12">
+                              <input value="" id="retypePassword" name="retypePassword" type="password" />
+                              <label for="retypePassword"><span>Retype Password</span></label>
+                            </div>
+                          </div>
+                 		<div class="row">
+                       	 	<div class="col s12">
+								 <button class="btn deep-purple waves-effect" type="submit" name="action" value="changePassword">Update<i class="material-icons right">send</i>
+                                 </button>
+                        	</div>
+                   		 </div>
+                        <br>
+						<br>
+                      </form>
+                    </div>
+                 
+                 
+            </div>
+        </div>
+        <!-- END ACCOUNT -->
+        <!-- LEARN MORE-->
+    	<div id="learn" class="white" >
+        	<div class="container">
+                  <div style="background-color:white;color:black;padding:20px;">
+                      <h5>Mission Statement</h5>
+                      <p>Medical results from genetic tests are unique in healthcare because the results of one individual might be useful or 
+                          important to the healthcare of relatives. When genetic results are shared among relatives, it may lead to greater 
+                          awareness and protections against inherited diseases or disorders. We built ShareDNA, 
+                          free software that runs on a smart phone, to allow you to easily share your genetic test results with anyone of your 
+                          choice. This app is for anyone interested in sharing their genetic results.</p>
+                  </div> 
+                  <div style="background-color:white;color:black;padding:20px;">
+                    <h5>Disclaimer</h5>
+                    <p>ShareDNA encrypts files to protect them during transport. Files are decrypted once viewed and stored on your device in their unencrypted form. For information about securing your mobile device and more visit: </p><a href="https://www.healthit.gov/" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>HealthIT.gov</p></a>
+                </div> 
+                  <!-- END MISSION STATEMENT-->
+                  <div class="row">
+                    <h5>Leadership</h5>
+                    <div class="column">
+                      <div class="card">
+                        <img src="images/Jarvik_Gail.png" alt="Gail" style="width:100%; padding:1em;">
+                        <div class="container2">
+                          <h3>Gail Jarvik, MD/PhD</h3>
+                          <p class="title">Head and Professor, Division of Medical Genetics</p>
+                          <a href="https://www.gs.washington.edu/faculty/jarvik.htm" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>More Information</p></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="column">
+                      <div class="card">
+                        <img src="images/Mooney_Resize.png" alt="Sean"  style="width:100%; padding:1em;">
+                        <div class="container2">
+                          <h3>Sean Mooney, PhD</h3>
+                          <p class="title">Professor and Chief Research Information Officer</p>
+                          <a href="http://bime.uw.edu/faculty/sean-mooney/" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>More Information</p></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="card">
+                        <img src="images/LauraImage.png" alt="Laura"  style="width:100%; padding:1em;">
+                        <div class="container2">
+                          <h3>Laura Amendola, MS, CGC</h3>
+                          <p class="title">Genetic Counselor</p>
+                          <a href="https://www.uwmedicine.org/bios/laura-amendola" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>More Information</p></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END LEADERS-->
+                  <div style="background-color:white;color:black;padding:20px;">
+                      <h5>Find a Genetic Provider</h5>
+                      <a href="https://www.uwmedicine.org/locations/genetic-medicine-uwmc" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>Make an Appointment at UW Genetic Medical Clinic</p></a>
+                      <a href="https://www.nsgc.org/findageneticcounselor" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>National Society of Genetic Counselors: Find a Genetic Counselor</p></a>
+                  </div> 
+                  <div style="background-color:white;color:black;padding:20px;">
+                      <h5>Learn More about Genetics</h5>
+                      <a href="https://ghr.nlm.nih.gov/condition" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>Learn More about Different Health Conditions</p></a>
+                      <a href="https://www.cancer.gov/about-cancer/causes-prevention/genetics" style="color:rgb(6,69,173)" onclick="window.open(this.href, '_system'); return false;"><p>Understanding the Genetics of Cancer</p></a>
+                  </div> <br>
+<br>
+<br>
+
+                  <!-- END LEARN EVEN MORE-->
+            </div> 
+        </div>
+        <!-- END LEARN MORE-->
+		<!-- LEARN MORE-->
+    	<div id="logout" class="white" >
+        	<div class="container">
+                  <h4>You are being logged out.</h4>
+                  
+					  
+				  		  
+            </div> 
+        </div>
+        <!-- END LEARN MORE-->
+        <!-- DEFAULT -->
+    	<div id="default" class="white">
+        	<div class="container" style="height:100%;">
+                <!-- Intro slides -->
+          	 <div class="carousel carousel-slider center" style="height:80%" data-indicators="false">
+                     <div class="carousel-item black-text" href="#one!">
+                     <h2 style="margin:auto; padding-top:20%">ShareDNA is a service to help you securely share your genetic test results with anyone of your choice.</h2>
+                 </div>
+                 <div class="carousel-item black-text" href="#two!">
+                     <h2 style="margin-left:auto; margin-right:auto; padding-top:5%"><img alt="Create Account" src="images/Create_Account_2.png" style="height:auto; width:15%;"/></h2><br>
+                     <p class="black-text">First, sign up by creating an account that requires an email and password.</p>
+                 </div>
+                 <div class="carousel-item black-text" href="#three!">
+                     <h2 style="margin-left:auto; margin-right:auto; padding-top:5%"><img alt="Upload Results" src="images/Upload_Results.png" style="height:auto; width:15%;"/></h2><br>
+                     <p class="black-text">Upload your genetic test result file to this app.</p>
+                 </div>
+                 <div class="carousel-item black-text" href="#four!">
+                     <h2 style="margin-left:auto; margin-right:auto; padding-top:5%"><img alt="Share Results" src="images/Share_Results_1.png" style="height:auto; width:20%;"/></h2><br>
+                     <p class="black-text">Finally, share your results with anyone of your choosing via text and/or email.</p>
+                 </div>
+              </div><br>
+                <div class="white" style="height:20%">
+                    <div class="btn deep-purple prev waves-effect">Prev</div>
+                    <div class="btn deep-purple next waves-effect">Next</div>
+                    <a class="btn purple waves-effect" href="#login">Skip Intro</a>
+                </div>
+            </div>
+        </div>
+        <!-- END DEFAULT -->
+    </main>
+    <script>
+        window.onhashchange = function () {
+          if (window.location.href.indexOf("#learn") > -1) {
+            $('#learnMore').hide();
+          } else {
+            $('#learnMore').show();
+          }
+        }
+      </script>
+ 	<!-- //PAGE CONTAINERS -->
+    <footer class="page-footer deep-purple" style="position:fixed;bottom:0;left:0;width:100%; z-index:99;">    
+       <div class="footer-copyright">
+          <div class="container">
+              <a href="mailto:help@sharedna.org">Need Help?</a>
+              <a class="grey-text text-lighten-4 right" href="#learn" id="learnMore"><i class="material-icons grey-text  text-lighten-2 left">info_outline</i>Learn More</a>
+          </div>
+       </div>
+       <div class="progress deep-purple" style=" margin:0; padding:0;">
+          <div class="indeterminate"></div>
+       </div>
+    </footer>
+    <script src="js/plugins/jquery/jquery-2.1.1.min.js"></script>
+    <script src="js/plugins/forms/jquery.form.min.js"></script>
+    <script src="js/bin/materialize.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/init.js"></script>
+  </body>
+</html>

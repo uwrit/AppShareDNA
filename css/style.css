@@ -1,0 +1,53 @@
+  /* CUSTOM STYLE */
+  html, body{
+	height:100%;
+	margin:0;
+	padding:0;
+  }
+  body {
+    display: flex;
+    height:100%;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto; 
+	height:10%;
+  }
+  
+  main > div {
+	flex: 1 0 auto; 
+	height:100%;
+  }
+  
+  main > * {
+	display: none !important;
+  }
+    
+  main > *:last-child {
+	display: block !important;
+  }
+ 
+  main > *:target {
+	display: block !important;
+	/* Place animation here*/	
+  }
+  
+  main > *:target ~ * {
+	  display: none !important;
+  }
+  
+@media screen and (max-width: 800px) {
+
+    .hide-footer {
+        display: none;
+    }
+
+}
+
+.new, tr.new {
+	background-color:rgba(243, 207, 31, 0.5) !important;	
+}
+.secureShow {
+	display: none;
+}
